@@ -1,0 +1,2653 @@
+/* ==========================================================================
+   LifePledge - Medical Awareness & Donor Card Generator
+   Theme: Medical Clean (Slate Blue, Pure White, Accent Rose/Red)
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --primary-slate: #0f172a;       /* Deep slate for luxury & contrast */
+    --secondary-slate: #1e293b;     /* Card background & headers */
+    --slate-border: #334155;        /* Subdued borders */
+    --slate-muted: #64748b;         /* Muted text */
+    --slate-light: #94a3b8;         /* Secondary highlights */
+    
+    --bg-page: #f8fafc;             /* Clean medical canvas */
+    --bg-surface: #ffffff;          /* Surface cards */
+    --bg-surface-subtle: #f1f5f9;   /* Subtle grey sections */
+    
+    --accent-red: #e11d48;          /* Rose-red for hearts, emergency, CTA */
+    --accent-red-hover: #be123c;    /* Deep rose-red */
+    --accent-red-subtle: #ffe4e6;   /* Rose soft tint */
+    --accent-red-border: #fca5a5;
+    
+    --accent-cyan: #0ea5e9;         /* Medical diagnostic cyan */
+    --accent-cyan-light: #e0f2fe;
+    
+    --accent-emerald: #10b981;      /* Verification & success green */
+    --accent-emerald-subtle: #d1fae5;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-white: #ffffff;
+    
+    /* Typography */
+    --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    /* Shadows & Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --radius-pill: 9999px;
+    
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+    --shadow-card: 0 20px 35px -10px rgba(15, 23, 42, 0.25);
+    
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base & Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+}
+
+img, svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, select {
+    font-family: inherit;
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--slate-border);
+    border-color: rgba(226, 232, 240, 0.8);
+    z-index: 1000;
+    transition: box-shadow var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+}
+
+.logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-red-hover));
+    color: var(--text-white);
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(225, 29, 72, 0.3);
+}
+
+.logo-text strong {
+    color: var(--accent-red);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--accent-red);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.2rem;
+    background-color: var(--accent-red);
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-pill);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    box-shadow: 0 3px 8px rgba(225, 29, 72, 0.25);
+}
+
+.btn-nav:hover {
+    background-color: var(--accent-red-hover);
+    transform: translateY(-1px);
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--primary-slate);
+    cursor: pointer;
+    padding: 0.4rem;
+}
+
+/* ==========================================================================
+   Hero Banner
+   ========================================================================== */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #334155 100%);
+    color: var(--text-white);
+    padding: 5rem 1.5rem 5.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 80% 20%, rgba(225, 29, 72, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fda4af;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(4px);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+}
+
+.highlight-text {
+    background: linear-gradient(135deg, #f43f5e, #fb7185);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-subtext {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+
+.hero-subtext strong {
+    color: #ffffff;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.75rem;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 1.25rem 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #f43f5e;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: var(--accent-red);
+    color: var(--text-white);
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all var(--transition-fast);
+    box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4);
+}
+
+.btn-hero-primary:hover {
+    background-color: var(--accent-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(225, 29, 72, 0.5);
+}
+
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.9rem 1.8rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(4px);
+}
+
+.btn-hero-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Main Wrapper & Common Section Layout
+   ========================================================================== */
+.main-wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.section {
+    margin-bottom: 5rem;
+}
+
+.section-alt {
+    background-color: var(--bg-surface-subtle);
+    padding: 4rem 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3rem;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--accent-red-subtle);
+    color: var(--accent-red);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.section-tag.success-tag {
+    background-color: var(--accent-emerald-subtle);
+    color: var(--accent-emerald);
+}
+
+.section-header h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--primary-slate);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.75rem;
+}
+
+.section-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Awareness Cards Grid
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.info-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.6rem;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(203, 213, 225, 0.8);
+}
+
+.card-icon-wrapper {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+}
+
+.card-icon-wrapper.red {
+    background-color: var(--accent-red-subtle);
+    color: var(--accent-red);
+}
+
+.card-icon-wrapper.teal {
+    background-color: var(--accent-cyan-light);
+    color: var(--accent-cyan);
+}
+
+.card-icon-wrapper.slate {
+    background-color: #e2e8f0;
+    color: var(--primary-slate);
+}
+
+.card-icon-wrapper.amber {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.info-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    margin-bottom: 0.6rem;
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Organs Showcase Pills */
+.organs-showcase {
+    background: var(--bg-surface);
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.organs-showcase h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.organs-showcase h3 i {
+    color: var(--accent-red);
+}
+
+.organs-pills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.organ-pill {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: var(--primary-slate);
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.organ-pill i {
+    color: var(--accent-red);
+}
+
+.organ-pill:hover {
+    background: var(--accent-red-subtle);
+    border-color: var(--accent-red-border);
+}
+
+/* ==========================================================================
+   Success Stories / Happy Patients Section
+   ========================================================================== */
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.75rem;
+}
+
+.story-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow-sm);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+.story-header {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.recipient-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.heart-glow {
+    background-color: #fff1f2;
+    color: var(--accent-red);
+    border: 2px solid #fca5a5;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.15);
+}
+
+.kidney-glow {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 2px solid #86efac;
+    box-shadow: 0 0 15px rgba(22, 163, 74, 0.15);
+}
+
+.cornea-glow {
+    background-color: #f0f9ff;
+    color: #0284c7;
+    border: 2px solid #7dd3fc;
+    box-shadow: 0 0 15px rgba(2, 132, 199, 0.15);
+}
+
+.recipient-meta h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    line-height: 1.3;
+}
+
+.transplant-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    margin-top: 0.25rem;
+}
+
+.badge-heart {
+    background-color: #fff1f2;
+    color: #e11d48;
+    border: 1px solid #fecdd3;
+}
+
+.badge-kidney {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.badge-cornea {
+    background-color: #f0f9ff;
+    color: #0284c7;
+    border: 1px solid #bae6fd;
+}
+
+.story-narrative {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+.recipient-quote {
+    background: #f8fafc;
+    border-left: 3.5px solid var(--accent-red);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--primary-slate);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.6rem;
+}
+
+.quote-mark {
+    color: var(--accent-red);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+
+.story-footer {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.story-status {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.story-impact {
+    background-color: #f1f5f9;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    color: var(--slate-600);
+}
+
+/* ==========================================================================
+   Myths vs Facts Section
+   ========================================================================== */
+.myths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 1.5rem;
+}
+
+.myth-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.myth-item {
+    padding: 1.4rem 1.6rem;
+}
+
+.myth-side {
+    background-color: #fff1f2;
+    border-bottom: 1px solid #fecdd3;
+}
+
+.myth-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #ffe4e6;
+    color: #e11d48;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.5rem;
+    border: 1px solid #fca5a5;
+}
+
+.myth-side h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #9f1239;
+    line-height: 1.45;
+}
+
+.fact-side {
+    background-color: #ffffff;
+}
+
+.fact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #dcfce7;
+    color: #15803d;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.5rem;
+    border: 1px solid #86efac;
+}
+
+.fact-side p {
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Inspiring Quotes Section
+   ========================================================================== */
+.section-quotes {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-xl);
+    padding: 3.5rem 2rem;
+}
+
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.quote-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow-sm);
+    padding: 2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    position: relative;
+}
+
+.quote-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+.quote-card.featured-quote {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--text-white);
+    border: 1.5px solid var(--accent-red);
+    box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.2);
+}
+
+.quote-icon-bubble {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--accent-red-subtle);
+    color: var(--accent-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.quote-icon-bubble.accent {
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-red-hover));
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(225, 29, 72, 0.4);
+}
+
+.quote-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--primary-slate);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.featured-quote .quote-text {
+    color: #ffffff;
+}
+
+.quote-author-info {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.85rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-quote .quote-author-info {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.quote-author-info strong {
+    font-size: 0.95rem;
+    color: var(--primary-slate);
+    font-weight: 700;
+}
+
+.featured-quote .quote-author-info strong {
+    color: #ffffff;
+}
+
+.quote-author-info span {
+    font-size: 0.8rem;
+    color: var(--slate-muted);
+    margin-top: 0.15rem;
+}
+
+.featured-quote .quote-author-info span {
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   Pledge Registration Form
+   ========================================================================== */
+.form-container {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.form-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.form-banner {
+    background: linear-gradient(135deg, var(--primary-slate), var(--secondary-slate));
+    color: var(--text-white);
+    padding: 1.75rem 2.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 2px solid var(--accent-red);
+}
+
+.form-banner-text h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.2rem;
+}
+
+.form-banner-text p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.form-secure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #93c5fd;
+}
+
+#pledgeForm {
+    padding: 2.25rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-slate);
+    margin-bottom: 0.45rem;
+}
+
+.section-label {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.req-star {
+    color: var(--accent-red);
+    font-weight: 700;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: #94a3b8;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: color var(--transition-fast);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.75rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--radius-md);
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    color: var(--primary-slate);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    outline: none;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+}
+
+.input-with-icon:focus-within .input-icon {
+    color: var(--accent-red);
+}
+
+.field-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--slate-muted);
+    margin-top: 0.35rem;
+}
+
+.field-error {
+    display: block;
+    font-size: 0.8rem;
+    color: #dc2626;
+    margin-top: 0.35rem;
+    font-weight: 500;
+    min-height: 1.1rem;
+}
+
+/* ==========================================================================
+   Passport Photo Upload Field Styles
+   ========================================================================== */
+.photo-upload-group {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1.75rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.photo-upload-group:focus-within {
+    border-color: #93c5fd;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.08);
+}
+
+.photo-upload-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.photo-input-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    margin-bottom: 0;
+}
+
+.photo-input-label i {
+    color: var(--accent-red);
+}
+
+.optional-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate-muted);
+}
+
+.photo-specs-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0284c7;
+    background-color: #e0f2fe;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.photo-file-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Interactive Photo Dropzone */
+.photo-dropzone {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius-md);
+    background-color: #ffffff;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    outline: none;
+    position: relative;
+}
+
+.photo-dropzone:hover {
+    border-color: #0ea5e9;
+    background-color: #f0f9ff;
+    transform: translateY(-1px);
+}
+
+.photo-dropzone:focus-visible {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+}
+
+.photo-dropzone.drag-active {
+    border-color: #0ea5e9;
+    background-color: #e0f2fe;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+    transform: scale(1.01);
+}
+
+/* Dropzone Empty State */
+.dropzone-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.upload-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+    transition: transform var(--transition-fast);
+}
+
+.photo-dropzone:hover .upload-icon-circle {
+    transform: scale(1.08);
+}
+
+.dropzone-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.dropzone-main-text {
+    font-size: 0.95rem;
+    color: var(--primary-slate);
+}
+
+.dropzone-main-text strong {
+    color: #0284c7;
+}
+
+.dropzone-sub-text {
+    font-size: 0.8rem;
+    color: var(--slate-muted);
+}
+
+.btn-browse-photo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #ffffff;
+    color: var(--primary-slate);
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--radius-pill);
+    padding: 0.45rem 1.15rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-browse-photo:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+    color: var(--accent-red);
+}
+
+/* Dropzone Active Preview State */
+.dropzone-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: left;
+    padding: 0.25rem 0;
+}
+
+.preview-thumbnail-wrap {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f172a;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: border-radius var(--transition-base);
+}
+
+.preview-thumbnail-wrap .form-photo-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: border-radius var(--transition-base);
+}
+
+.preview-thumbnail-wrap .frame-square,
+.form-photo-thumbnail.frame-square {
+    border-radius: 10px;
+}
+
+.preview-thumbnail-wrap:has(.frame-square) {
+    border-radius: 12px;
+}
+
+.preview-thumbnail-wrap:has(.frame-circle),
+.preview-thumbnail-wrap .frame-circle,
+.form-photo-thumbnail.frame-circle {
+    border-radius: 50%;
+}
+
+.preview-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    max-width: 320px;
+}
+
+.preview-meta-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-filename {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.preview-filesize {
+    font-size: 0.75rem;
+    color: var(--slate-muted);
+}
+
+.preview-btn-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.btn-photo-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+.btn-change {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.btn-change:hover {
+    background-color: #bae6fd;
+    color: #0c4a6e;
+}
+
+.btn-remove {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-remove:hover {
+    background-color: #fecaca;
+    color: #991b1b;
+}
+
+/* Frame Shape Toggle in Pledge Form */
+.frame-shape-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.selector-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.shape-toggle-buttons {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e2e8f0;
+    padding: 0.2rem;
+    border-radius: var(--radius-md);
+    gap: 0.2rem;
+}
+
+.btn-shape {
+    border: none;
+    background: transparent;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--slate-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all var(--transition-fast);
+}
+
+.btn-shape.active {
+    background-color: #ffffff;
+    color: var(--primary-slate);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-shape:hover:not(.active) {
+    color: var(--primary-slate);
+}
+
+/* ==========================================================================
+   Health Fitness Certificate / Medical Report Upload Styles
+   ========================================================================== */
+.doc-upload-group {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1.75rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.doc-upload-group:focus-within {
+    border-color: #a7f3d0;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+}
+
+.doc-upload-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.doc-input-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    margin-bottom: 0;
+}
+
+.doc-input-label i {
+    color: #10b981;
+}
+
+.doc-specs-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #047857;
+    background-color: #d1fae5;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.doc-file-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Interactive Medical Document Dropzone */
+.doc-dropzone {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius-md);
+    background-color: #ffffff;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    outline: none;
+    position: relative;
+}
+
+.doc-dropzone:hover {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+    transform: translateY(-1px);
+}
+
+.doc-dropzone:focus-visible {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
+
+.doc-dropzone.drag-active {
+    border-color: #10b981;
+    background-color: #dcfce7;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    transform: scale(1.01);
+}
+
+/* Document Empty State */
+.doc-dropzone-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.doc-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    color: #059669;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+    transition: transform var(--transition-fast);
+}
+
+.doc-dropzone:hover .doc-icon-circle {
+    transform: scale(1.08);
+}
+
+.doc-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.doc-main-text {
+    font-size: 0.95rem;
+    color: var(--primary-slate);
+}
+
+.doc-main-text strong {
+    color: #059669;
+}
+
+.doc-sub-text {
+    font-size: 0.8rem;
+    color: var(--slate-muted);
+}
+
+.btn-browse-doc {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #ffffff;
+    color: var(--primary-slate);
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--radius-pill);
+    padding: 0.45rem 1.15rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-browse-doc:hover {
+    background-color: #f0fdf4;
+    border-color: #10b981;
+    color: #059669;
+}
+
+/* Document Preview State */
+.doc-dropzone-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: left;
+    padding: 0.25rem 0;
+}
+
+.doc-file-icon-wrap {
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.doc-file-icon-wrap .icon-pdf {
+    color: #ef4444;
+}
+
+.doc-file-icon-wrap .icon-img {
+    color: #0ea5e9;
+}
+
+.doc-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+    max-width: 340px;
+}
+
+.doc-meta-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.doc-filename {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-slate);
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.doc-filesize {
+    font-size: 0.75rem;
+    color: var(--slate-muted);
+}
+
+.doc-status-indicator {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #059669;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.doc-btn-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.15rem;
+    flex-wrap: wrap;
+}
+
+.btn-doc-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+/* Checkbox Pills Styling */
+.master-checkbox-wrap {
+    margin-bottom: 0.85rem;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.checkbox-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background-color: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    padding: 0.65rem 0.95rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-slate);
+    transition: all var(--transition-fast);
+    user-select: none;
+}
+
+.checkbox-pill input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pill-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1.5px solid #94a3b8;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: transparent;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.checkbox-pill input[type="checkbox"]:checked + .pill-check {
+    background-color: var(--accent-red);
+    border-color: var(--accent-red);
+    color: #ffffff;
+}
+
+.checkbox-pill:has(input[type="checkbox"]:checked) {
+    background-color: #fff1f2;
+    border-color: var(--accent-red);
+    color: #9f1239;
+}
+
+.master-pill {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+    padding: 0.8rem 1.1rem;
+}
+
+.master-pill .pill-title {
+    font-weight: 700;
+    color: var(--primary-slate);
+}
+
+.master-pill:has(input[type="checkbox"]:checked) .pill-title {
+    color: #9f1239;
+}
+
+.master-pill i.fa-star {
+    color: #eab308;
+}
+
+.text-red { color: #e11d48; }
+.text-cyan { color: #0284c7; }
+
+/* Consent Checkbox */
+.declaration-group {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.consent-label input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-red);
+    flex-shrink: 0;
+}
+
+/* Submit Button */
+.form-submit-wrap {
+    text-align: center;
+}
+
+.btn-submit {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-red-hover));
+    color: var(--text-white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.35);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(225, 29, 72, 0.45);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Donor Card Preview Section
+   ========================================================================== */
+.hidden {
+    display: none !important;
+}
+
+.card-preview-section {
+    animation: fadeInSlide 0.6s ease-out forwards;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-display-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+/* The Official Digital Donor Card */
+.donor-card {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    background: linear-gradient(135deg, #090e17 0%, #1e293b 55%, #0f172a 100%);
+    color: var(--text-white);
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow-card);
+    border: 2px solid #38bdf8;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Watermark */
+.card-watermark {
+    position: absolute;
+    right: -25px;
+    bottom: -20px;
+    font-size: 14rem;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 1.15rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 2;
+    gap: 1rem;
+}
+
+.card-brand {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.card-brand-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--accent-red), #fb7185);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(225, 29, 72, 0.5);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.card-brand-titles {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+.brand-main {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.brand-badge-wrap {
+    margin-top: 0.4rem;
+}
+
+.card-status-badge {
+    background: linear-gradient(135deg, #e11d48, #be123c);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: fit-content;
+    box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3);
+}
+
+/* Top-Right Passport Photo Frame on Donor Card */
+.card-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
+}
+
+.card-photo-frame {
+    width: 82px;
+    height: 82px;
+    position: relative;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border: 2px solid #38bdf8;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-radius var(--transition-base), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card-photo-frame:hover {
+    border-color: #7dd3fc;
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Square Photo Frame Style */
+.card-photo-frame.frame-square {
+    border-radius: 12px;
+}
+
+/* Circular Photo Frame Style */
+.card-photo-frame.frame-circle {
+    border-radius: 50%;
+}
+
+/* Dynamically Rendered Photo Image */
+.card-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+}
+
+/* Clean Default Avatar Placeholder */
+.card-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: inherit;
+    color: #94a3b8;
+    user-select: none;
+    padding: 0.25rem;
+    position: relative;
+}
+
+.placeholder-avatar-icon {
+    font-size: 1.85rem;
+    color: #94a3b8;
+    line-height: 1;
+    margin-bottom: 2px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.placeholder-initials {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.photo-caption-tag {
+    font-size: 0.52rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #38bdf8;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Card Body */
+.card-body {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1.25rem;
+}
+
+/* Left Avatar Column */
+.card-col-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.donor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    border: 2px solid #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.blood-group-box {
+    background: #ffffff;
+    color: #be123c;
+    border-radius: 8px;
+    padding: 0.25rem 0.6rem;
+    text-align: center;
+    border: 2px solid #f43f5e;
+    width: 100%;
+}
+
+.blood-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    line-height: 1;
+}
+
+.blood-val {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* QR Code Container on Card */
+.card-qr-box {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 0.35rem;
+    border: 1.5px solid #38bdf8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin-top: 0.2rem;
+}
+
+.card-qr {
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.card-qr img,
+.card-qr canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+.qr-subtext {
+    display: block;
+    font-size: 0.52rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Right Details Column */
+.card-col-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.card-field-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.card-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.card-val {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    word-break: break-word;
+}
+
+.card-val.donor-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+}
+
+.card-val.mono {
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+}
+
+.card-val.highlight {
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+.card-val.organs-highlight {
+    color: #fca5a5;
+    font-weight: 600;
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+/* Verified Medical Certificate Attached Confirmation Tag on Donor Card */
+.card-medical-status-row {
+    margin-top: 0.45rem;
+    display: flex;
+}
+
+.card-med-cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(6, 182, 212, 0.18));
+    border: 1.5px solid #10b981;
+    color: #a7f3d0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 0.32rem 0.75rem;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.25);
+    text-transform: uppercase;
+    animation: fadeInSlide 0.4s ease-out;
+}
+
+.card-med-cert-badge i {
+    color: #34d399;
+    font-size: 0.85rem;
+}
+
+/* Card Footer */
+.card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 0.85rem;
+    position: relative;
+    z-index: 2;
+}
+
+.declaration-text {
+    font-size: 0.72rem;
+    color: #cbd5e1;
+    line-height: 1.45;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.quote-icon {
+    color: #38bdf8;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.card-security-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    padding-top: 0.5rem;
+}
+
+.security-chip {
+    font-size: 0.65rem;
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.security-barcode {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Action Buttons */
+.card-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #22bf5b, #0f7468);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+}
+
+.btn-whatsapp i {
+    font-size: 1.25rem;
+}
+
+.btn-print {
+    background-color: var(--primary-slate);
+    color: var(--text-white);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.3);
+}
+
+.btn-print:hover {
+    background-color: var(--secondary-slate);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.4);
+}
+
+.btn-edit {
+    background-color: #ffffff;
+    color: var(--text-secondary);
+    border: 1.5px solid #cbd5e1;
+}
+
+.btn-edit:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-slate);
+    border-color: #94a3b8;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+    background-color: var(--primary-slate);
+    color: #94a3b8;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-logo i {
+    color: var(--accent-red);
+}
+
+.footer-copy {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    max-width: 650px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+}
+
+.footer-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.footer-badges span {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.footer-badges i {
+    color: var(--accent-cyan);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 900px) {
+    .myths-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 1.25rem 4.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .hero-stats {
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-lg);
+        border-bottom: 1px solid #e2e8f0;
+        gap: 1.25rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .btn-nav {
+        display: none;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    #pledgeForm {
+        padding: 1.5rem;
+    }
+
+    .form-banner {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .card-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-col-avatar {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .blood-group-box {
+        width: auto;
+        padding: 0.35rem 0.85rem;
+    }
+
+    .card-qr-box {
+        width: auto;
+        margin-top: 0;
+        padding: 0.25rem;
+    }
+
+    .card-qr {
+        width: 52px;
+        height: 52px;
+    }
+
+    .card-col-details {
+        width: 100%;
+    }
+
+    .donor-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-stats {
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .stat-divider {
+        width: 60px;
+        height: 1px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        align-items: flex-start;
+        gap: 0.65rem;
+    }
+
+    .card-photo-frame {
+        width: 70px;
+        height: 70px;
+    }
+
+    .card-brand-titles .brand-main {
+        font-size: 0.82rem;
+    }
+}
+
+/* ==========================================================================
+   Print Stylesheet (@media print)
+   Strictly isolate the official donor card for clean PDF & physical printing
+   ========================================================================== */
+@media print {
+    /* Hide everything on the page */
+    html, body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .navbar,
+    .hero,
+    #about,
+    #stories,
+    #myths,
+    #quotes,
+    #pledge,
+    .section-header,
+    .card-actions,
+    .no-print,
+    .footer {
+        display: none !important;
+    }
+
+    .main-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .card-preview-section {
+        display: block !important;
+        margin: 0 !important;
+        padding: 2.5cm 0 0 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .card-display-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Preserve colors, backgrounds, borders & gradients */
+    .donor-card {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        background: linear-gradient(135deg, #090e17 0%, #1e293b 55%, #0f172a 100%) !important;
+        color: #ffffff !important;
+        border: 2px solid #38bdf8 !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        max-width: 540px !important;
+        margin: 0 auto !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .card-photo-frame {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        border: 2px solid #38bdf8 !important;
+        background: #1e293b !important;
+    }
+
+    .card-photo-img {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        display: block !important;
+    }
+
+    .card-photo-placeholder {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #1e293b !important;
+        color: #94a3b8 !important;
+    }
+
+    .placeholder-avatar-icon {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: #94a3b8 !important;
+    }
+
+    .placeholder-initials {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: #38bdf8 !important;
+    }
+
+    .photo-caption-tag {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: #38bdf8 !important;
+    }
+
+    .donor-avatar {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #1e293b !important;
+        color: #ffffff !important;
+        border: 2px solid #38bdf8 !important;
+    }
+
+    .blood-group-box {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #ffffff !important;
+        color: #be123c !important;
+        border: 2px solid #f43f5e !important;
+    }
+
+    .card-status-badge {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #e11d48 !important;
+        color: #ffffff !important;
+    }
+
+    .card-brand-icon {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #e11d48 !important;
+        color: #ffffff !important;
+    }
+
+    .card-val.highlight {
+        color: #38bdf8 !important;
+    }
+
+    .card-val.organs-highlight {
+        color: #fca5a5 !important;
+    }
+
+    .card-qr-box {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #ffffff !important;
+        border: 1.5px solid #38bdf8 !important;
+    }
+
+    .card-med-cert-badge {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #064e3b !important;
+        border: 1.5px solid #10b981 !important;
+        color: #a7f3d0 !important;
+        box-shadow: none !important;
+    }
+}

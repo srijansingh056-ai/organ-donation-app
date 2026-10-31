@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Organ Donation Awareness Campaign & Digital Donor Card Generator. Pledge your organs, bust myths, save lives, and generate your printable donor card today.">
+    <title>LifePledge | Organ Donation Awareness & Official Donor Card</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Icons via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo" aria-label="LifePledge Home">
+                <span class="logo-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                <span class="logo-text">Life<strong>Pledge</strong></span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about"><i class="fa-solid fa-circle-info"></i> Why Donate</a></li>
+                <li><a href="#stories"><i class="fa-solid fa-heart-pulse"></i> Stories</a></li>
+                <li><a href="#myths"><i class="fa-solid fa-scale-balanced"></i> Myths vs Facts</a></li>
+                <li><a href="#quotes"><i class="fa-solid fa-quote-left"></i> Quotes</a></li>
+                <li><a href="#pledge"><i class="fa-solid fa-hand-holding-heart"></i> Take Pledge</a></li>
+                <li id="navCardItem" class="hidden"><a href="#card-preview"><i class="fa-solid fa-id-card"></i> Your Card</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#pledge" class="btn-nav"><i class="fa-solid fa-pen-nib"></i> Pledge Now</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-certificate"></i> National Healthcare Awareness Initiative
+            </div>
+            <h1>Give the Ultimate <span class="highlight-text">Gift of Life</span></h1>
+            <p class="hero-subtext">
+                One deceased organ donor can save up to <strong>8 lives</strong> and enhance the lives of over <strong>75 more</strong> through eye and tissue donation. Make your decision count today.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Lives Saved per Donor</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">75+</span>
+                    <span class="stat-label">Tissues & Sights Restored</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Free & Voluntary Act</span>
+                </div>
+            </div>
+
+            <div class="hero-cta-group">
+                <a href="#pledge" class="btn-hero-primary"><i class="fa-solid fa-heart"></i> Take the Pledge Now</a>
+                <a href="#myths" class="btn-hero-secondary"><i class="fa-solid fa-book-open"></i> Read Myths vs. Facts</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+
+        <!-- Why Donate Awareness Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-heart-pulse"></i> Impact & Awareness</span>
+                <h2>Why Organ Donation Matters</h2>
+                <p class="section-desc">Every day, thousands of patients battle terminal organ failure waiting for a transplant. Your voluntary pledge brings hope where hope is fading.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <div class="card-icon-wrapper red">
+                        <i class="fa-solid fa-heart-circle-bolt"></i>
+                    </div>
+                    <h3>Immediate Life Saving</h3>
+                    <p>Vital organs like the heart, lungs, liver, and kidneys replace failing biological systems, giving mothers, fathers, and children a brand-new lease on life.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon-wrapper teal">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3>Restoring Sight & Mobility</h3>
+                    <p>Corneal transplants restore vision to individuals living in blindness, while skin, bone, and heart valve grafts heal severe burn victims and congenital defects.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon-wrapper slate">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <h3>Solace for Loved Ones</h3>
+                    <p>Families find immense comfort knowing their loved one’s final chapter was one of profound generosity that echoed through surviving patients and their families.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon-wrapper amber">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3>Bridging the Critical Gap</h3>
+                    <p>With someone added to the transplant waiting list every 9 minutes, pledging now ensures an ethical, transparent pool of donors ready to save lives.</p>
+                </div>
+            </div>
+
+            <!-- Organs That Can Be Pledged Pill Showcase -->
+            <div class="organs-showcase">
+                <h3><i class="fa-solid fa-clipboard-check"></i> Organs and Tissues You Can Pledge:</h3>
+                <div class="organs-pills-list">
+                    <span class="organ-pill"><i class="fa-solid fa-heart"></i> Heart</span>
+                    <span class="organ-pill"><i class="fa-solid fa-lungs"></i> Lungs</span>
+                    <span class="organ-pill"><i class="fa-solid fa-shield-virus"></i> Liver</span>
+                    <span class="organ-pill"><i class="fa-solid fa-bacteria"></i> Kidneys</span>
+                    <span class="organ-pill"><i class="fa-solid fa-dna"></i> Pancreas</span>
+                    <span class="organ-pill"><i class="fa-solid fa-capsules"></i> Intestines</span>
+                    <span class="organ-pill"><i class="fa-solid fa-eye"></i> Corneas (Eyes)</span>
+                    <span class="organ-pill"><i class="fa-solid fa-bone"></i> Bone & Skin Tissues</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories / Happy Patients Section -->
+        <section id="stories" class="section">
+            <div class="section-header">
+                <span class="section-tag success-tag"><i class="fa-solid fa-heart-circle-check"></i> Real Lives Changed</span>
+                <h2>Stories of Hope: Restored Lives</h2>
+                <p class="section-desc">Behind every transplant statistic is a human life restored. Meet individuals who received the miraculous gift of health through selfless donors.</p>
+            </div>
+
+            <div class="stories-grid">
+                <!-- Story 1: Heart Recipient -->
+                <article class="story-card">
+                    <div class="story-header">
+                        <div class="recipient-avatar heart-glow">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <div class="recipient-meta">
+                            <h3>Maya Sharma, 28</h3>
+                            <span class="transplant-badge badge-heart">
+                                <i class="fa-solid fa-heart"></i> Heart Recipient &bull; 3 Yrs Post-Op
+                            </span>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <p class="story-narrative">
+                            Diagnosed with severe viral cardiomyopathy at 25, Maya was bedridden in heart failure with less than six months to live. A selfless donor's heart gave Maya a second chance at youth. Today, she is a youth athletic coach and recently completed her first 10K marathon.
+                        </p>
+                        <blockquote class="recipient-quote">
+                            <i class="fa-solid fa-quote-left quote-mark"></i>
+                            <span>"Every beat of my heart is a living prayer of thankfulness for the stranger who chose to give life when theirs had ended."</span>
+                        </blockquote>
+                    </div>
+                    <div class="story-footer">
+                        <span class="story-status"><i class="fa-solid fa-shield-heart text-red"></i> Thriving & Active</span>
+                        <span class="story-impact">1 Heart Donated = 1 Life Saved</span>
+                    </div>
+                </article>
+
+                <!-- Story 2: Kidney Recipient -->
+                <article class="story-card">
+                    <div class="story-header">
+                        <div class="recipient-avatar kidney-glow">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                        <div class="recipient-meta">
+                            <h3>David Campbell, 42</h3>
+                            <span class="transplant-badge badge-kidney">
+                                <i class="fa-solid fa-shield-virus"></i> Kidney Recipient &bull; 5 Yrs Post-Op
+                            </span>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <p class="story-narrative">
+                            David spent over four years tied to hemodialysis machines three days a week while battling end-stage kidney failure. Receiving a donor kidney liberated him from medical confinement, allowing him to return to high school teaching and raise his twin daughters.
+                        </p>
+                        <blockquote class="recipient-quote">
+                            <i class="fa-solid fa-quote-left quote-mark"></i>
+                            <span>"Dialysis maintained my pulse, but my kidney donor gave me my future back. I am here watching my daughters grow up because someone pledged."</span>
+                        </blockquote>
+                    </div>
+                    <div class="story-footer">
+                        <span class="story-status"><i class="fa-solid fa-circle-check text-green"></i> Full Renal Recovery</span>
+                        <span class="story-impact">1 Kidney Donated = 1 Family Restored</span>
+                    </div>
+                </article>
+
+                <!-- Story 3: Corneal Recipient -->
+                <article class="story-card">
+                    <div class="story-header">
+                        <div class="recipient-avatar cornea-glow">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <div class="recipient-meta">
+                            <h3>Elena Rostova, 34</h3>
+                            <span class="transplant-badge badge-cornea">
+                                <i class="fa-solid fa-eye"></i> Corneal Recipient &bull; 2 Yrs Post-Op
+                            </span>
+                        </div>
+                    </div>
+                    <div class="story-body">
+                        <p class="story-narrative">
+                            Following a devastating domestic chemical accident, Elena suffered bilateral corneal scarring that plunged her world into total darkness. Thanks to two donor corneal transplants, her 20/20 vision was restored, allowing her to resume her career as a nature photographer.
+                        </p>
+                        <blockquote class="recipient-quote">
+                            <i class="fa-solid fa-quote-left quote-mark"></i>
+                            <span>"When the bandages came off and I saw my 4-year-old son's face smiling at me, the world lit up again. Sight is truly a priceless gift."</span>
+                        </blockquote>
+                    </div>
+                    <div class="story-footer">
+                        <span class="story-status"><i class="fa-solid fa-eye text-cyan"></i> 20/20 Vision Restored</span>
+                        <span class="story-impact">Corneal Pledge = Sight Reborn</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Myths vs Facts Section -->
+        <section id="myths" class="section section-alt">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> Truth & Science</span>
+                <h2>Myths vs. Facts</h2>
+                <p class="section-desc">Misinformation prevents many from pledging. Let's break down the most common misconceptions with scientific medical reality.</p>
+            </div>
+
+            <div class="myths-grid">
+                <div class="myth-card">
+                    <div class="myth-item myth-side">
+                        <span class="myth-badge"><i class="fa-solid fa-circle-xmark"></i> Myth</span>
+                        <h4>If doctors see I’m an organ donor on my ID, they won’t work hard to save my life.</h4>
+                    </div>
+                    <div class="myth-item fact-side">
+                        <span class="fact-badge"><i class="fa-solid fa-circle-check"></i> Medical Fact</span>
+                        <p>The medical team treating you in emergency care is completely separate from transplant recovery teams. A doctor's statutory duty is 100% focused on preserving your life.</p>
+                    </div>
+                </div>
+
+                <div class="myth-card">
+                    <div class="myth-item myth-side">
+                        <span class="myth-badge"><i class="fa-solid fa-circle-xmark"></i> Myth</span>
+                        <h4>I'm too old or have medical conditions, so my organs cannot be used.</h4>
+                    </div>
+                    <div class="myth-item fact-side">
+                        <span class="fact-badge"><i class="fa-solid fa-circle-check"></i> Medical Fact</span>
+                        <p>Donors in their 70s, 80s, and 90s have saved lives! At the time of passing, physicians evaluate organ viability on a case-by-case basis. Never rule yourself out.</p>
+                    </div>
+                </div>
+
+                <div class="myth-card">
+                    <div class="myth-item myth-side">
+                        <span class="myth-badge"><i class="fa-solid fa-circle-xmark"></i> Myth</span>
+                        <h4>Organ donation disfigures the body and forbids having an open-casket funeral.</h4>
+                    </div>
+                    <div class="myth-item fact-side">
+                        <span class="fact-badge"><i class="fa-solid fa-circle-check"></i> Medical Fact</span>
+                        <p>Organ and tissue recovery is conducted with the utmost surgical dignity in a sterile operating theatre. Clothing completely covers incisions, permitting open-casket viewings.</p>
+                    </div>
+                </div>
+
+                <div class="myth-card">
+                    <div class="myth-item myth-side">
+                        <span class="myth-badge"><i class="fa-solid fa-circle-xmark"></i> Myth</span>
+                        <h4>My religion or faith does not permit organ and tissue donation.</h4>
+                    </div>
+                    <div class="myth-item fact-side">
+                        <span class="fact-badge"><i class="fa-solid fa-circle-check"></i> Medical Fact</span>
+                        <p>Nearly all major world religions—including Christianity, Islam, Hinduism, Buddhism, Judaism, and Sikhism—support donation as an act of selfless charity and love.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inspiring Quotes Section -->
+        <section id="quotes" class="section section-quotes">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-quote-left"></i> Words of Hope & Humanity</span>
+                <h2>Inspiring Quotes on Giving Life</h2>
+                <p class="section-desc">Reflections from clinicians, humanitarians, and donor families honoring the selfless beauty of organ donation.</p>
+            </div>
+
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <div class="quote-icon-bubble">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="quote-text">
+                        "The measure of life is not its duration, but its donation."
+                    </p>
+                    <div class="quote-author-info">
+                        <strong>Peter Marshall</strong>
+                        <span>Former Chaplain of the US Senate</span>
+                    </div>
+                </div>
+
+                <div class="quote-card featured-quote">
+                    <div class="quote-icon-bubble accent">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <p class="quote-text">
+                        "Don’t take your organs to heaven with you — heaven knows we need them here."
+                    </p>
+                    <div class="quote-author-info">
+                        <strong>Transplant Healthcare Axiom</strong>
+                        <span>Global Organ Donation Movement</span>
+                    </div>
+                </div>
+
+                <div class="quote-card">
+                    <div class="quote-icon-bubble">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="quote-text">
+                        "To the world you may be one person, but to one person you may be the world."
+                    </p>
+                    <div class="quote-author-info">
+                        <strong>Humanitarian Proverb</strong>
+                        <span>Dedicated to Organ Donors Worldwide</span>
+                    </div>
+                </div>
+
+                <div class="quote-card">
+                    <div class="quote-icon-bubble">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="quote-text">
+                        "There is no greater legacy than leaving behind the heartbeat, sight, and breath that allows another human being to live tomorrow."
+                    </p>
+                    <div class="quote-author-info">
+                        <strong>Dr. Thomas Starzl</strong>
+                        <span>Father of Modern Transplantation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pledge Form Section -->
+        <section id="pledge" class="section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-signature"></i> Official Registration</span>
+                <h2>Organ Donation Pledge Form</h2>
+                <p class="section-desc">Join millions of compassionate donors. Complete the form below to generate your official Digital Organ Donor Card.</p>
+            </div>
+
+            <div class="form-container">
+                <div class="form-card">
+                    <div class="form-banner">
+                        <div class="form-banner-text">
+                            <h3><i class="fa-solid fa-id-card-clip"></i> Donor Registration Form</h3>
+                            <p>Fields marked with <span class="req-star">*</span> are mandatory for legal certification.</p>
+                        </div>
+                        <div class="form-secure-badge">
+                            <i class="fa-solid fa-lock"></i> 256-bit Secure Client Processing
+                        </div>
+                    </div>
+
+                    <form id="pledgeForm" novalidate>
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="fullName">Full Legal Name <span class="req-star">*</span></label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-user input-icon"></i>
+                                <input type="text" id="fullName" name="fullName" placeholder="e.g. Dr. Jane Doe" required autocomplete="name">
+                            </div>
+                            <span class="field-error" id="fullNameError"></span>
+                        </div>
+
+                        <!-- DOB and Blood Group Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth <span class="req-star">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-calendar-days input-icon"></i>
+                                    <input type="date" id="dob" name="dob" required max="2026-10-28">
+                                </div>
+                                <span class="field-error" id="dobError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bloodGroup">Blood Group <span class="req-star">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-droplet input-icon"></i>
+                                    <select id="bloodGroup" name="bloodGroup" required>
+                                        <option value="" disabled selected>Select Blood Group</option>
+                                        <option value="A+">A+ (A Positive)</option>
+                                        <option value="A-">A- (A Negative)</option>
+                                        <option value="B+">B+ (B Positive)</option>
+                                        <option value="B-">B- (B Negative)</option>
+                                        <option value="AB+">AB+ (AB Positive)</option>
+                                        <option value="AB-">AB- (AB Negative)</option>
+                                        <option value="O+">O+ (O Positive)</option>
+                                        <option value="O-">O- (O Negative)</option>
+                                    </select>
+                                </div>
+                                <span class="field-error" id="bloodGroupError"></span>
+                            </div>
+                        </div>
+
+                        <!-- Email and Phone Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="req-star">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-envelope input-icon"></i>
+                                    <input type="email" id="email" name="email" placeholder="jane.doe@example.com" required autocomplete="email">
+                                </div>
+                                <span class="field-error" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="req-star">*</span></label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-phone input-icon"></i>
+                                    <input type="tel" id="phone" name="phone" placeholder="e.g. +1 555-019-2834" required autocomplete="tel">
+                                </div>
+                                <span class="field-error" id="phoneError"></span>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="form-group">
+                            <label for="emergencyContact">Emergency Contact Person & Phone <span class="req-star">*</span></label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-kit-medical input-icon"></i>
+                                <input type="text" id="emergencyContact" name="emergencyContact" placeholder="e.g. John Doe (Spouse) - +1 555-012-3456" required>
+                            </div>
+                            <small class="field-hint">Medical personnel will consult next-of-kin to confirm your generous donation wish.</small>
+                            <span class="field-error" id="emergencyError"></span>
+                        </div>
+
+                        <!-- Passport-Size Profile Photo Upload -->
+                        <div class="form-group photo-upload-group">
+                            <div class="photo-upload-label-row">
+                                <label for="photoInput" class="photo-input-label">
+                                    <i class="fa-solid fa-camera"></i> Passport-Size Profile Photograph <span class="optional-tag">(Optional)</span>
+                                </label>
+                                <span class="photo-specs-tag"><i class="fa-solid fa-circle-info"></i> JPG, PNG, WEBP (Max 5MB)</span>
+                            </div>
+                            
+                            <div class="photo-upload-container">
+                                <!-- Hidden Native File Input -->
+                                <input type="file" id="photoInput" name="photoInput" accept="image/png, image/jpeg, image/jpg, image/webp" class="photo-file-hidden">
+                                
+                                <!-- Interactive Dropzone / Upload Box -->
+                                <div class="photo-dropzone" id="photoDropzone" tabindex="0" role="button" aria-label="Upload passport-size profile photograph">
+                                    <!-- Empty State -->
+                                    <div class="dropzone-empty" id="dropzoneEmpty">
+                                        <div class="upload-icon-circle">
+                                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        </div>
+                                        <div class="dropzone-text-block">
+                                            <p class="dropzone-main-text"><strong>Click to upload</strong> or drag & drop photo here</p>
+                                            <p class="dropzone-sub-text">Recommended: clear square or portrait passport-size headshot</p>
+                                        </div>
+                                        <button type="button" class="btn-browse-photo" id="btnBrowsePhoto">
+                                            <i class="fa-solid fa-image"></i> Choose Photograph
+                                        </button>
+                                    </div>
+
+                                    <!-- Preview State (Shown when photo selected) -->
+                                    <div class="dropzone-preview hidden" id="dropzonePreview">
+                                        <div class="preview-thumbnail-wrap">
+                                            <img id="formPhotoPreview" src="" alt="Selected photo preview" class="form-photo-thumbnail frame-square">
+                                        </div>
+                                        <div class="preview-meta">
+                                            <div class="preview-meta-info">
+                                                <span class="preview-filename" id="previewFileName">passport-photo.jpg</span>
+                                                <span class="preview-filesize" id="previewFileSize">1.2 MB</span>
+                                            </div>
+                                            <div class="preview-btn-row">
+                                                <button type="button" class="btn-photo-action btn-change" id="btnChangePhoto">
+                                                    <i class="fa-solid fa-arrows-rotate"></i> Change
+                                                </button>
+                                                <button type="button" class="btn-photo-action btn-remove" id="btnRemovePhoto">
+                                                    <i class="fa-solid fa-trash-can"></i> Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Frame Shape Choice: Square or Circular -->
+                                <div class="frame-shape-selector">
+                                    <span class="selector-title"><i class="fa-solid fa-crop-simple"></i> Card Frame Style:</span>
+                                    <div class="shape-toggle-buttons" id="shapeToggleGroup">
+                                        <button type="button" class="btn-shape active" data-shape="square" id="btnShapeSquare">
+                                            <i class="fa-regular fa-square"></i> Square Frame
+                                        </button>
+                                        <button type="button" class="btn-shape" data-shape="circle" id="btnShapeCircle">
+                                            <i class="fa-regular fa-circle"></i> Circular Frame
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="field-error" id="photoError"></span>
+                        </div>
+
+                        <!-- Health Fitness Certificate / Medical Report Upload -->
+                        <div class="form-group doc-upload-group">
+                            <div class="doc-upload-label-row">
+                                <label for="medicalCertInput" class="doc-input-label">
+                                    <i class="fa-solid fa-file-medical"></i> Health Fitness Certificate / Medical Report <span class="optional-tag">(Optional)</span>
+                                </label>
+                                <span class="doc-specs-tag"><i class="fa-solid fa-circle-info"></i> PDF, JPG, PNG (Max 10MB)</span>
+                            </div>
+                            
+                            <div class="doc-upload-container">
+                                <!-- Hidden Native File Input -->
+                                <input type="file" id="medicalCertInput" name="medicalCertInput" accept=".pdf,application/pdf,image/png,image/jpeg,image/jpg,image/webp" class="doc-file-hidden">
+                                
+                                <!-- Interactive Dropzone / Upload Box -->
+                                <div class="doc-dropzone" id="medicalDropzone" tabindex="0" role="button" aria-label="Upload health fitness certificate or medical report">
+                                    <!-- Empty State -->
+                                    <div class="doc-dropzone-empty" id="medicalDropzoneEmpty">
+                                        <div class="doc-icon-circle">
+                                            <i class="fa-solid fa-file-arrow-up"></i>
+                                        </div>
+                                        <div class="doc-text-block">
+                                            <p class="doc-main-text"><strong>Click to upload</strong> or drag & drop certificate</p>
+                                            <p class="doc-sub-text">Attach fitness certificate, lab report, or physician clearance (PDF or Image)</p>
+                                        </div>
+                                        <button type="button" class="btn-browse-doc" id="btnBrowseMedical">
+                                            <i class="fa-solid fa-paperclip"></i> Select Document
+                                        </button>
+                                    </div>
+
+                                    <!-- Preview State (Shown when file selected) -->
+                                    <div class="doc-dropzone-preview hidden" id="medicalDropzonePreview">
+                                        <div class="doc-file-icon-wrap" id="docFileIconWrap">
+                                            <i class="fa-solid fa-file-pdf" id="docTypeIcon"></i>
+                                        </div>
+                                        <div class="doc-meta">
+                                            <div class="doc-meta-info">
+                                                <span class="doc-filename" id="medicalFileName">medical-report.pdf</span>
+                                                <span class="doc-filesize" id="medicalFileSize">2.4 MB</span>
+                                            </div>
+                                            <div class="doc-status-indicator">
+                                                <i class="fa-solid fa-circle-check"></i> Ready to verify on donor card
+                                            </div>
+                                            <div class="doc-btn-row">
+                                                <button type="button" class="btn-doc-action btn-change" id="btnChangeMedical">
+                                                    <i class="fa-solid fa-arrows-rotate"></i> Change
+                                                </button>
+                                                <button type="button" class="btn-doc-action btn-remove" id="btnRemoveMedical">
+                                                    <i class="fa-solid fa-trash-can"></i> Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <small class="field-hint">Medical clearance confirms physical fitness and expedites voluntary donation protocols.</small>
+                            <span class="field-error" id="medicalError"></span>
+                        </div>
+
+                        <!-- Organs Selection -->
+                        <div class="form-group">
+                            <label class="section-label">Organs You Wish to Pledge <span class="req-star">*</span></label>
+                            
+                            <div class="master-checkbox-wrap">
+                                <label class="checkbox-pill master-pill">
+                                    <input type="checkbox" id="organAll" name="organMaster" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span class="pill-title"><i class="fa-solid fa-star"></i> All Viable Organs & Tissues (Recommended)</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox-grid" id="individualOrgans">
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Heart" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-heart text-red"></i> Heart</span>
+                                </label>
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Kidneys" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-shield-virus"></i> Kidneys</span>
+                                </label>
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Liver" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-bacteria"></i> Liver</span>
+                                </label>
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Lungs" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-lungs"></i> Lungs</span>
+                                </label>
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Pancreas" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-dna"></i> Pancreas</span>
+                                </label>
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Corneas" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-eye text-cyan"></i> Corneas (Eyes)</span>
+                                </label>
+                                <label class="checkbox-pill">
+                                    <input type="checkbox" name="organs" value="Tissues" checked>
+                                    <span class="pill-check"><i class="fa-solid fa-check"></i></span>
+                                    <span><i class="fa-solid fa-bone"></i> Tissues & Valves</span>
+                                </label>
+                            </div>
+                            <span class="field-error" id="organsError"></span>
+                        </div>
+
+                        <!-- Legal Declaration Checkbox -->
+                        <div class="form-group declaration-group">
+                            <label class="consent-label">
+                                <input type="checkbox" id="consentCheck" required checked>
+                                <span>I hereby pledge my organs and tissues upon death for transplantation to help save and enhance lives, and authorize issuance of my Official Donor Card.</span>
+                            </label>
+                            <span class="field-error" id="consentError"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-submit-wrap">
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <i class="fa-solid fa-id-card"></i> Generate My Official Donor Card
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donor Card Output Section (Hidden initially) -->
+        <section id="card-preview" class="section card-preview-section hidden">
+            <div class="section-header">
+                <span class="section-tag success-tag"><i class="fa-solid fa-circle-check"></i> Pledge Successfully Registered</span>
+                <h2>Your Official Organ Donor Card</h2>
+                <p class="section-desc">Keep a copy of this card in your wallet, save it on your phone, and inform your family about your decision.</p>
+            </div>
+
+            <!-- Printable ID Card Container -->
+            <div class="card-display-wrapper">
+                <div id="donorCard" class="donor-card">
+                    <!-- Subtle watermark logo -->
+                    <div class="card-watermark"><i class="fa-solid fa-heart-pulse"></i></div>
+
+                    <!-- Card Header -->
+                    <div class="card-header">
+                        <div class="card-brand">
+                            <div class="card-brand-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div class="card-brand-titles">
+                                <span class="brand-sub">NATIONAL HEALTH REGISTRY</span>
+                                <span class="brand-main">OFFICIAL ORGAN DONOR CARD</span>
+                                <div class="brand-badge-wrap">
+                                    <span class="card-status-badge">
+                                        <i class="fa-solid fa-check-double"></i> PLEDGED
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top-Right Passport Photo Frame on the Donor Card -->
+                        <div class="card-photo-wrapper">
+                            <div class="card-photo-frame frame-square" id="cardPhotoFrame" title="Passport-Size Photograph">
+                                <!-- Uploaded Photo Rendered Dynamically -->
+                                <img id="cardPhotoImg" src="" alt="Passport Profile Photograph" class="card-photo-img hidden">
+                                
+                                <!-- Clean Default Avatar Placeholder -->
+                                <div id="cardPhotoPlaceholder" class="card-photo-placeholder">
+                                    <div class="placeholder-avatar-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <span class="placeholder-initials" id="cardInitials">JD</span>
+                                </div>
+                            </div>
+                            <span class="photo-caption-tag">PHOTO ID</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <!-- Left Blood & Verification Column -->
+                        <div class="card-col-avatar">
+                            <div class="blood-group-box">
+                                <span class="blood-label">BLOOD</span>
+                                <span class="blood-val" id="cardBlood">O+</span>
+                            </div>
+                            <!-- Functional QR Code Container -->
+                            <div class="card-qr-box">
+                                <div id="cardQrCode" class="card-qr"></div>
+                                <span class="qr-subtext">SCAN TO VERIFY</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Details Column -->
+                        <div class="card-col-details">
+                            <div class="card-field-row full">
+                                <span class="card-label">REGISTRATION PLEDGE ID</span>
+                                <span class="card-val mono highlight" id="cardPledgeId">ODP-2026-894210</span>
+                            </div>
+
+                            <div class="card-field-row full">
+                                <span class="card-label">DONOR FULL NAME</span>
+                                <span class="card-val donor-name" id="cardName">Dr. Jane Doe</span>
+                            </div>
+
+                            <div class="card-field-grid">
+                                <div class="card-field-row">
+                                    <span class="card-label">DATE OF BIRTH</span>
+                                    <span class="card-val" id="cardDob">1995-04-12</span>
+                                </div>
+                                <div class="card-field-row">
+                                    <span class="card-label">ISSUED DATE</span>
+                                    <span class="card-val" id="cardIssueDate">Oct 28, 2026</span>
+                                </div>
+                            </div>
+
+                            <div class="card-field-row full">
+                                <span class="card-label">EMERGENCY CONTACT</span>
+                                <span class="card-val" id="cardEmergency">John Doe (Spouse) - +1 555-012-3456</span>
+                            </div>
+
+                            <div class="card-field-row full">
+                                <span class="card-label">PLEDGED ORGANS & TISSUES</span>
+                                <span class="card-val organs-highlight" id="cardOrgans">All Viable Organs & Tissues</span>
+                            </div>
+
+                            <!-- Verified Medical Certificate Attached Status Badge -->
+                            <div class="card-medical-status-row hidden" id="cardMedicalBadge">
+                                <div class="card-med-cert-badge">
+                                    <i class="fa-solid fa-file-circle-check"></i>
+                                    <span>Verified Medical Certificate Attached</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer Declaration -->
+                    <div class="card-footer">
+                        <div class="declaration-text">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <span>I have officially pledged to donate my organs/tissues for transplantation upon death to save and restore lives.</span>
+                        </div>
+                        <div class="card-security-line">
+                            <span class="security-chip"><i class="fa-solid fa-microchip"></i> DIGITAL SECURE</span>
+                            <span class="security-barcode">||||| | |||| ||| |||||| || |</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Controls (Hidden on print) -->
+            <div class="card-actions no-print">
+                <button type="button" id="btnShareWhatsApp" class="btn-action btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Share Pledge on WhatsApp
+                </button>
+                <button type="button" id="btnPrintCard" class="btn-action btn-print">
+                    <i class="fa-solid fa-print"></i> Print / Save as PDF
+                </button>
+                <button type="button" id="btnEditPledge" class="btn-action btn-edit">
+                    <i class="fa-solid fa-pen-to-square"></i> Update Pledge Details
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-heart-pulse"></i> LifePledge Initiative
+            </div>
+            <p class="footer-copy">
+                &copy; 2026 Organ Donation Awareness & Healthcare Advocacy Campaign. Generated donor cards serve as an educational and personal pledge confirmation. Always discuss your pledge with your loved ones.
+            </p>
+            <div class="footer-badges">
+                <span><i class="fa-solid fa-shield-heart"></i> Life Saving Advocacy</span>
+                <span><i class="fa-solid fa-hands-holding-circle"></i> Voluntary Contribution</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- QRCode.js Library via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
