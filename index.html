@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Organ Donation Awareness Campaign & Digital Donor Card Generator. Pledge your organs, bust myths, save lives, and generate your printable donor card today.">
-    <title>LifePledge | Organ Donation Awareness & Official Donor Card</title>
+    <title>LifePledge | Organ Donation Awareness & Donor Pledge Card</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,115 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="locked">
+
+    <!-- Login gate: shown first; the site unlocks after login -->
+    <div class="auth-gate" id="authGate">
+        <div class="auth-shell">
+
+            <!-- Left: colourful welcome panel -->
+            <aside class="auth-hero">
+                <span class="float-icon fi-1" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+                <span class="float-icon fi-2" aria-hidden="true"><i class="fa-solid fa-eye"></i></span>
+                <span class="float-icon fi-3" aria-hidden="true"><i class="fa-solid fa-droplet"></i></span>
+                <span class="float-icon fi-4" aria-hidden="true"><i class="fa-solid fa-hand-holding-heart"></i></span>
+
+                <div class="auth-brand"><i class="fa-solid fa-heart-pulse"></i><span>Life<strong>Pledge</strong></span></div>
+                <h2>One pledge can save up to 8 lives.</h2>
+                <p>Take the pledge, bust the myths and get your free digital donor card.</p>
+                <ul class="auth-perks">
+                    <li><i class="fa-solid fa-id-card"></i> Free, downloadable donor card</li>
+                    <li><i class="fa-solid fa-people-roof"></i> Family guide &amp; myths vs facts</li>
+                    <li><i class="fa-solid fa-lock"></i> Your details stay in your browser</li>
+                </ul>
+                <div class="auth-stats">
+                    <div><strong>8</strong><span>lives saved per donor</span></div>
+                    <div><strong>75+</strong><span>more lives enhanced</span></div>
+                </div>
+            </aside>
+
+            <!-- Right: login / sign up form -->
+            <div class="auth-card">
+                <h1 id="authTitle">Welcome back 👋</h1>
+                <p class="auth-sub" id="authSub">Log in to continue your pledge and get your donor card.</p>
+
+                <div class="auth-tabs" role="tablist" aria-label="Log in or sign up">
+                    <button type="button" role="tab" aria-selected="true" class="active" data-mode="login"><i class="fa-solid fa-right-to-bracket"></i> Log in</button>
+                    <button type="button" role="tab" aria-selected="false" data-mode="signup"><i class="fa-solid fa-user-plus"></i> Sign up</button>
+                </div>
+
+                <form id="authForm" novalidate>
+                    <div class="auth-alert" id="authError" role="alert"></div>
+
+                    <div class="form-group hidden" id="authNameGroup">
+                        <label for="authName">Full name</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            <input type="text" id="authName" autocomplete="name" placeholder="e.g. Jane Doe">
+                        </div>
+                        <span class="field-error" id="authNameError" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="authEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                            <input type="email" id="authEmail" autocomplete="email" placeholder="you@example.com">
+                        </div>
+                        <span class="field-error" id="authEmailError" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="authPassword">Password</label>
+                        <div class="input-with-icon has-toggle">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="authPassword" autocomplete="current-password" placeholder="Enter your password">
+                            <button type="button" class="toggle-pass" data-target="authPassword" aria-label="Show password" aria-pressed="false" title="Show password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <span class="caps-warn hidden" id="capsWarn"><i class="fa-solid fa-arrow-up"></i> Caps Lock is on</span>
+                        <span class="field-error" id="authPasswordError" role="alert"></span>
+
+                        <!-- Sign up only: strength meter + rules -->
+                        <div class="pw-help hidden" id="pwHelp">
+                            <div class="pw-meter-row">
+                                <div class="pw-meter" id="pwMeter" data-level="0"><span></span><span></span><span></span><span></span></div>
+                                <span class="pw-label" id="pwStrengthLabel"></span>
+                            </div>
+                            <ul class="pw-rules" id="pwRules">
+                                <li data-rule="length"><i class="fa-regular fa-circle"></i> 8+ characters</li>
+                                <li data-rule="mix"><i class="fa-regular fa-circle"></i> Letter &amp; number</li>
+                                <li data-rule="extra"><i class="fa-regular fa-circle"></i> Upper/lowercase or symbol</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sign up only: confirm password -->
+                    <div class="form-group hidden" id="authConfirmGroup">
+                        <label for="authConfirm">Confirm password</label>
+                        <div class="input-with-icon has-toggle">
+                            <i class="fa-solid fa-shield-halved input-icon"></i>
+                            <input type="password" id="authConfirm" autocomplete="new-password" placeholder="Re-enter your password">
+                            <button type="button" class="toggle-pass" data-target="authConfirm" aria-label="Show password" aria-pressed="false" title="Show password"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <span class="field-error" id="authConfirmError" role="alert"></span>
+                    </div>
+
+                    <label class="auth-check" for="authRemember">
+                        <input type="checkbox" id="authRemember">
+                        <span>Keep me logged in on this device</span>
+                    </label>
+
+                    <button type="submit" class="btn-submit" id="authSubmit">
+                        <span class="btn-label" id="authSubmitLabel"><i class="fa-solid fa-right-to-bracket"></i> Log in</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                </form>
+
+                <p class="auth-switch"><span id="authSwitchText">New to LifePledge?</span> <button type="button" class="link-btn" id="authSwitchBtn">Create an account</button></p>
+                <p class="auth-note"><i class="fa-solid fa-circle-info"></i> Accounts are saved only in this browser. This is a demo login, not a secure server login.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Sticky Navigation Bar -->
     <nav class="navbar" id="navbar">
@@ -31,13 +139,16 @@
                 <li><a href="#about"><i class="fa-solid fa-circle-info"></i> Why Donate</a></li>
                 <li><a href="#stories"><i class="fa-solid fa-heart-pulse"></i> Stories</a></li>
                 <li><a href="#myths"><i class="fa-solid fa-scale-balanced"></i> Myths vs Facts</a></li>
+                <li><a href="#family"><i class="fa-solid fa-people-roof"></i> Family Guide</a></li>
                 <li><a href="#quotes"><i class="fa-solid fa-quote-left"></i> Quotes</a></li>
                 <li><a href="#pledge"><i class="fa-solid fa-hand-holding-heart"></i> Take Pledge</a></li>
+                <li><a href="#verify"><i class="fa-solid fa-shield-halved"></i> Verify</a></li>
                 <li id="navCardItem" class="hidden"><a href="#card-preview"><i class="fa-solid fa-id-card"></i> Your Card</a></li>
             </ul>
 
             <div class="nav-actions">
                 <a href="#pledge" class="btn-nav"><i class="fa-solid fa-pen-nib"></i> Pledge Now</a>
+                <button type="button" class="btn-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -126,28 +237,24 @@
                 </div>
             </div>
 
-            <!-- Organs That Can Be Pledged Pill Showcase -->
-            <div class="organs-showcase">
-                <h3><i class="fa-solid fa-clipboard-check"></i> Organs and Tissues You Can Pledge:</h3>
-                <div class="organs-pills-list">
-                    <span class="organ-pill"><i class="fa-solid fa-heart"></i> Heart</span>
-                    <span class="organ-pill"><i class="fa-solid fa-lungs"></i> Lungs</span>
-                    <span class="organ-pill"><i class="fa-solid fa-shield-virus"></i> Liver</span>
-                    <span class="organ-pill"><i class="fa-solid fa-bacteria"></i> Kidneys</span>
-                    <span class="organ-pill"><i class="fa-solid fa-dna"></i> Pancreas</span>
-                    <span class="organ-pill"><i class="fa-solid fa-capsules"></i> Intestines</span>
-                    <span class="organ-pill"><i class="fa-solid fa-eye"></i> Corneas (Eyes)</span>
-                    <span class="organ-pill"><i class="fa-solid fa-bone"></i> Bone & Skin Tissues</span>
+            <!-- Organ Guide: which part of each organ is donated + facts -->
+            <div class="organs-showcase organ-guide" id="organGuide">
+                <h3><i class="fa-solid fa-clipboard-check"></i> Organs and Tissues You Can Pledge: What Exactly Is Donated?</h3>
+                <p class="organ-info-lead">Tap an organ to see exactly which part of it is donated, how many people it can help, and some facts about it.</p>
+                <div class="organ-info">
+                    <div class="organ-tabs" id="organTabs" role="tablist" aria-label="Organ details"></div>
+                    <div class="organ-detail" id="organDetail" role="tabpanel" aria-live="polite"></div>
                 </div>
+                <p class="organ-info-note"><i class="fa-solid fa-circle-info"></i> General information only. Your pledge applies after death, and the transplant team decides what is medically usable at that time.</p>
             </div>
         </section>
 
         <!-- Success Stories / Happy Patients Section -->
         <section id="stories" class="section">
             <div class="section-header">
-                <span class="section-tag success-tag"><i class="fa-solid fa-heart-circle-check"></i> Real Lives Changed</span>
+                <span class="section-tag success-tag"><i class="fa-solid fa-heart-circle-check"></i> Illustrative Stories</span>
                 <h2>Stories of Hope: Restored Lives</h2>
-                <p class="section-desc">Behind every transplant statistic is a human life restored. Meet individuals who received the miraculous gift of health through selfless donors.</p>
+                <p class="section-desc">Behind every transplant statistic is a human life restored. These three stories are illustrative examples written for this campaign, not real patients.</p>
             </div>
 
             <div class="stories-grid">
@@ -292,6 +399,26 @@
             </div>
         </section>
 
+        <!-- Family Discussion Guide -->
+        <section id="family" class="section">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-people-roof"></i> Talk to Your Family</span>
+                <h2>Family Discussion Guide</h2>
+                <p class="section-desc">Hospitals usually ask your family to confirm your wish, so their support matters. Use these five steps to tell them.</p>
+            </div>
+            <div class="fam-list">
+                <details class="fam-step" open><summary>Choose a calm moment</summary><p>Pick a quiet time when nobody is rushed or upset, such as after a meal. Avoid raising it during a medical emergency.</p></details>
+                <details class="fam-step"><summary>Say what you decided and why</summary><p>Start with your own reason and keep it personal: "I've decided to pledge my organs, and I want you to hear it from me."</p></details>
+                <details class="fam-step"><summary>Answer the worries people have most</summary><p>Doctors treating you in an emergency are separate from the transplant team. Donation costs your family nothing. Open-casket viewing is still possible. Most major religions support donation.</p></details>
+                <details class="fam-step"><summary>Listen, and give them time</summary><p>Let them react. If someone is upset, don't argue. Say you'll talk again. Fear usually comes from not knowing what happens.</p></details>
+                <details class="fam-step"><summary>Make your wish easy to follow</summary><p>Show them your pledge card, tell them where you keep it, and name one person who will speak for you if the time comes.</p></details>
+            </div>
+            <div class="fam-starter">
+                <p id="conversationStarter">I want to tell you something important. I've decided to pledge my organs and tissues after my death so they can save other people's lives. I'd like you to know my wish and support it. Can we talk about it, and can I answer any questions you have?</p>
+                <button type="button" class="btn-action btn-edit" id="btnCopyStarter"><i class="fa-regular fa-copy"></i> Copy this message</button>
+            </div>
+        </section>
+
         <!-- Inspiring Quotes Section -->
         <section id="quotes" class="section section-quotes">
             <div class="section-header">
@@ -322,8 +449,8 @@
                         "Don’t take your organs to heaven with you — heaven knows we need them here."
                     </p>
                     <div class="quote-author-info">
-                        <strong>Transplant Healthcare Axiom</strong>
-                        <span>Global Organ Donation Movement</span>
+                        <strong>Popular awareness slogan</strong>
+                        <span>Used in donation campaigns</span>
                     </div>
                 </div>
 
@@ -335,8 +462,8 @@
                         "To the world you may be one person, but to one person you may be the world."
                     </p>
                     <div class="quote-author-info">
-                        <strong>Humanitarian Proverb</strong>
-                        <span>Dedicated to Organ Donors Worldwide</span>
+                        <strong>Popular saying</strong>
+                        <span>Often shared by donor families</span>
                     </div>
                 </div>
 
@@ -345,11 +472,11 @@
                         <i class="fa-solid fa-quote-left"></i>
                     </div>
                     <p class="quote-text">
-                        "There is no greater legacy than leaving behind the heartbeat, sight, and breath that allows another human being to live tomorrow."
+                        "A pledge today can give someone a heartbeat, sight, and a tomorrow."
                     </p>
                     <div class="quote-author-info">
-                        <strong>Dr. Thomas Starzl</strong>
-                        <span>Father of Modern Transplantation</span>
+                        <strong>LifePledge Campaign</strong>
+                        <span>Original message</span>
                     </div>
                 </div>
             </div>
@@ -358,9 +485,9 @@
         <!-- Pledge Form Section -->
         <section id="pledge" class="section">
             <div class="section-header">
-                <span class="section-tag"><i class="fa-solid fa-signature"></i> Official Registration</span>
+                <span class="section-tag"><i class="fa-solid fa-signature"></i> Pledge Registration</span>
                 <h2>Organ Donation Pledge Form</h2>
-                <p class="section-desc">Join millions of compassionate donors. Complete the form below to generate your official Digital Organ Donor Card.</p>
+                <p class="section-desc">Join millions of compassionate donors. Complete the form below to generate your Digital Organ Donor Pledge Card.</p>
             </div>
 
             <div class="form-container">
@@ -368,10 +495,10 @@
                     <div class="form-banner">
                         <div class="form-banner-text">
                             <h3><i class="fa-solid fa-id-card-clip"></i> Donor Registration Form</h3>
-                            <p>Fields marked with <span class="req-star">*</span> are mandatory for legal certification.</p>
+                            <p>Fields marked with <span class="req-star">*</span> are mandatory.</p>
                         </div>
                         <div class="form-secure-badge">
-                            <i class="fa-solid fa-lock"></i> 256-bit Secure Client Processing
+                            <i class="fa-solid fa-lock"></i> Stays in your browser
                         </div>
                     </div>
 
@@ -392,7 +519,7 @@
                                 <label for="dob">Date of Birth <span class="req-star">*</span></label>
                                 <div class="input-with-icon">
                                     <i class="fa-solid fa-calendar-days input-icon"></i>
-                                    <input type="date" id="dob" name="dob" required max="2026-10-28">
+                                    <input type="date" id="dob" name="dob" required>
                                 </div>
                                 <span class="field-error" id="dobError"></span>
                             </div>
@@ -414,6 +541,15 @@
                                     </select>
                                 </div>
                                 <span class="field-error" id="bloodGroupError"></span>
+                            </div>
+                        </div>
+
+                        <!-- Age (auto-calculated from date of birth) -->
+                        <div class="form-group">
+                            <label for="age">Age <span class="optional-tag">(filled in from your date of birth)</span></label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-hourglass-half input-icon"></i>
+                                <input type="text" id="age" name="age" readonly placeholder="Select your date of birth first">
                             </div>
                         </div>
 
@@ -580,7 +716,7 @@
                             
                             <div class="master-checkbox-wrap">
                                 <label class="checkbox-pill master-pill">
-                                    <input type="checkbox" id="organAll" name="organMaster" checked>
+                                    <input type="checkbox" id="organAll" name="organMaster">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span class="pill-title"><i class="fa-solid fa-star"></i> All Viable Organs & Tissues (Recommended)</span>
                                 </label>
@@ -588,37 +724,37 @@
 
                             <div class="checkbox-grid" id="individualOrgans">
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Heart" checked>
+                                    <input type="checkbox" name="organs" value="Heart">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-heart text-red"></i> Heart</span>
                                 </label>
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Kidneys" checked>
+                                    <input type="checkbox" name="organs" value="Kidneys">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-shield-virus"></i> Kidneys</span>
                                 </label>
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Liver" checked>
+                                    <input type="checkbox" name="organs" value="Liver">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-bacteria"></i> Liver</span>
                                 </label>
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Lungs" checked>
+                                    <input type="checkbox" name="organs" value="Lungs">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-lungs"></i> Lungs</span>
                                 </label>
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Pancreas" checked>
+                                    <input type="checkbox" name="organs" value="Pancreas">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-dna"></i> Pancreas</span>
                                 </label>
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Corneas" checked>
+                                    <input type="checkbox" name="organs" value="Corneas">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-eye text-cyan"></i> Corneas (Eyes)</span>
                                 </label>
                                 <label class="checkbox-pill">
-                                    <input type="checkbox" name="organs" value="Tissues" checked>
+                                    <input type="checkbox" name="organs" value="Tissues">
                                     <span class="pill-check"><i class="fa-solid fa-check"></i></span>
                                     <span><i class="fa-solid fa-bone"></i> Tissues & Valves</span>
                                 </label>
@@ -629,8 +765,8 @@
                         <!-- Legal Declaration Checkbox -->
                         <div class="form-group declaration-group">
                             <label class="consent-label">
-                                <input type="checkbox" id="consentCheck" required checked>
-                                <span>I hereby pledge my organs and tissues upon death for transplantation to help save and enhance lives, and authorize issuance of my Official Donor Card.</span>
+                                <input type="checkbox" id="consentCheck" required>
+                                <span>I hereby pledge my organs and tissues upon death for transplantation to help save and enhance lives, and authorize issuance of my Donor Pledge Card.</span>
                             </label>
                             <span class="field-error" id="consentError"></span>
                         </div>
@@ -638,7 +774,7 @@
                         <!-- Submit Button -->
                         <div class="form-submit-wrap">
                             <button type="submit" class="btn-submit" id="submitBtn">
-                                <i class="fa-solid fa-id-card"></i> Generate My Official Donor Card
+                                <i class="fa-solid fa-id-card"></i> Generate My Donor Pledge Card
                             </button>
                         </div>
                     </form>
@@ -650,7 +786,7 @@
         <section id="card-preview" class="section card-preview-section hidden">
             <div class="section-header">
                 <span class="section-tag success-tag"><i class="fa-solid fa-circle-check"></i> Pledge Successfully Registered</span>
-                <h2>Your Official Organ Donor Card</h2>
+                <h2>Your Organ Donor Pledge Card</h2>
                 <p class="section-desc">Keep a copy of this card in your wallet, save it on your phone, and inform your family about your decision.</p>
             </div>
 
@@ -667,8 +803,8 @@
                                 <i class="fa-solid fa-heart-pulse"></i>
                             </div>
                             <div class="card-brand-titles">
-                                <span class="brand-sub">NATIONAL HEALTH REGISTRY</span>
-                                <span class="brand-main">OFFICIAL ORGAN DONOR CARD</span>
+                                <span class="brand-sub">LIFEPLEDGE CAMPAIGN</span>
+                                <span class="brand-main">ORGAN DONOR PLEDGE CARD</span>
                                 <div class="brand-badge-wrap">
                                     <span class="card-status-badge">
                                         <i class="fa-solid fa-check-double"></i> PLEDGED
@@ -731,6 +867,10 @@
                                     <span class="card-label">ISSUED DATE</span>
                                     <span class="card-val" id="cardIssueDate">Oct 28, 2026</span>
                                 </div>
+                                <div class="card-field-row">
+                                    <span class="card-label">AGE</span>
+                                    <span class="card-val" id="cardAge">-</span>
+                                </div>
                             </div>
 
                             <div class="card-field-row full">
@@ -743,11 +883,11 @@
                                 <span class="card-val organs-highlight" id="cardOrgans">All Viable Organs & Tissues</span>
                             </div>
 
-                            <!-- Verified Medical Certificate Attached Status Badge -->
+                            <!-- Medical Document Attached Status Badge -->
                             <div class="card-medical-status-row hidden" id="cardMedicalBadge">
                                 <div class="card-med-cert-badge">
                                     <i class="fa-solid fa-file-circle-check"></i>
-                                    <span>Verified Medical Certificate Attached</span>
+                                    <span>Medical Document Attached</span>
                                 </div>
                             </div>
                         </div>
@@ -760,7 +900,7 @@
                             <span>I have officially pledged to donate my organs/tissues for transplantation upon death to save and restore lives.</span>
                         </div>
                         <div class="card-security-line">
-                            <span class="security-chip"><i class="fa-solid fa-microchip"></i> DIGITAL SECURE</span>
+                            <span class="security-chip"><i class="fa-solid fa-microchip"></i> DIGITAL PLEDGE</span>
                             <span class="security-barcode">||||| | |||| ||| |||||| || |</span>
                         </div>
                     </div>
@@ -772,12 +912,55 @@
                 <button type="button" id="btnShareWhatsApp" class="btn-action btn-whatsapp">
                     <i class="fa-brands fa-whatsapp"></i> Share Pledge on WhatsApp
                 </button>
+                <button type="button" id="btnDownloadCard" class="btn-action btn-print">
+                    <i class="fa-solid fa-download"></i> Download Card (PNG)
+                </button>
                 <button type="button" id="btnPrintCard" class="btn-action btn-print">
                     <i class="fa-solid fa-print"></i> Print / Save as PDF
                 </button>
                 <button type="button" id="btnEditPledge" class="btn-action btn-edit">
                     <i class="fa-solid fa-pen-to-square"></i> Update Pledge Details
                 </button>
+            </div>
+        </section>
+
+        <!-- Verification Page -->
+        <section id="verify" class="section section-alt">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> Verification</span>
+                <h2>Verify a Card or Document</h2>
+                <p class="section-desc">Check a donor pledge card, or screen a medical document before you rely on it.</p>
+            </div>
+            <div class="verify-note"><i class="fa-solid fa-circle-info"></i> These are automated screening checks. They catch wrong file types, edited files, duplicates and missing details. They cannot prove a document is genuine. Only the issuing doctor or hospital can confirm that, so always contact them. Card checks only find pledges made in this browser.</div>
+            <div class="verify-grid">
+                <div class="verify-card">
+                    <h3><i class="fa-solid fa-id-card"></i> Verify a donor card</h3>
+                    <form id="cardVerifyForm" novalidate>
+                        <div class="form-group"><label for="vId">Pledge ID or scanned QR text</label>
+                            <div class="input-with-icon"><i class="fa-solid fa-hashtag input-icon"></i><input type="text" id="vId" placeholder="ODP-2026-123456"></div></div>
+                        <div class="form-group"><label for="vName">Donor name on the card</label>
+                            <div class="input-with-icon"><i class="fa-solid fa-user input-icon"></i><input type="text" id="vName"></div></div>
+                        <button type="submit" class="btn-submit">Check card</button>
+                    </form>
+                    <div class="vr-box" id="cardResult" aria-live="polite"></div>
+                </div>
+                <div class="verify-card">
+                    <h3><i class="fa-solid fa-file-medical"></i> Verify a medical document</h3>
+                    <form id="docVerifyForm" novalidate>
+                        <div class="form-group"><label for="vFile">Document (PDF, JPG, PNG, WEBP, max 10 MB)</label>
+                            <input type="file" id="vFile" class="plain-file" accept=".pdf,image/png,image/jpeg,image/webp"></div>
+                        <div class="form-group"><label for="vIssuer">Doctor or hospital that issued it</label>
+                            <div class="input-with-icon"><i class="fa-solid fa-hospital input-icon"></i><input type="text" id="vIssuer"></div></div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="vCert">Certificate number</label>
+                                <div class="input-with-icon"><i class="fa-solid fa-barcode input-icon"></i><input type="text" id="vCert"></div></div>
+                            <div class="form-group"><label for="vDate">Issue date</label>
+                                <div class="input-with-icon"><i class="fa-solid fa-calendar-days input-icon"></i><input type="date" id="vDate"></div></div>
+                        </div>
+                        <button type="submit" class="btn-submit">Run checks</button>
+                    </form>
+                    <div class="vr-box" id="docResult" aria-live="polite"></div>
+                </div>
             </div>
         </section>
 
@@ -790,7 +973,7 @@
                 <i class="fa-solid fa-heart-pulse"></i> LifePledge Initiative
             </div>
             <p class="footer-copy">
-                &copy; 2026 Organ Donation Awareness & Healthcare Advocacy Campaign. Generated donor cards serve as an educational and personal pledge confirmation. Always discuss your pledge with your loved ones.
+                &copy; 2026 Organ Donation Awareness & Healthcare Advocacy Campaign. Donor cards made here are personal pledge cards, not government-issued documents. To register officially, use your country's national donor registry (for example NOTTO in India). Always discuss your pledge with your loved ones.
             </p>
             <div class="footer-badges">
                 <span><i class="fa-solid fa-shield-heart"></i> Life Saving Advocacy</span>
@@ -802,6 +985,8 @@
     <!-- Scripts -->
     <!-- QRCode.js Library via CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- html2canvas: saves the donor card as an image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,2 +1,2 @@
-# organ-donation-app
-Organ Donation Awareness Pledge and Donor Card Generator
+# life-Pledge
+Organ Donation Awareness Pledge And Donor Card Generator
